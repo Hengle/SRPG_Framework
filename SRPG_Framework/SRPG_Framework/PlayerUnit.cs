@@ -11,6 +11,7 @@ namespace SRPG_Framework
     {
         // attributes
         // stats
+        private int hitPoints;
         private int attack;
         private int defense;
         private int magic;
@@ -20,6 +21,7 @@ namespace SRPG_Framework
         List<int> collectedStats;
 
         // growth rates
+        private int hitPointsRate;
         private int attackRate;
         private int defenseRate;
         private int magicRate;
@@ -33,13 +35,18 @@ namespace SRPG_Framework
         // represent player inventory as an array to keep it finite
         Item[] inventory = new Item[5];
 
+        private int level;
+        private int currentExperience;
+        private int totalExperience;
+
         // properties
         // constructor
-        public PlayerUnit(Texture2D thisSprite, int x, int y, int width, int height, bool isDynamic, string thisName,
-                            int atk, int def, int mag, int res, int spd, int mov,
-                            int atkRate, int defRate, int magRate, int resRate, int spdRate, int movRate) : base(thisSprite, x, y, width, height, isDynamic, thisName)
+        public PlayerUnit(Texture2D thisSprite, int x, int y, int width, int height, bool isDynamic, string thisName, string thisClass,
+                            int hp, int atk, int def, int mag, int res, int spd, int mov,
+                            int hpRate, int atkRate, int defRate, int magRate, int resRate, int spdRate, int movRate) : base(thisSprite, x, y, width, height, isDynamic, thisName, thisClass)
         {
             // assign the stats
+            hitPoints = hp;
             attack = atk;
             defense = def;
             magic = mag;
@@ -48,6 +55,7 @@ namespace SRPG_Framework
             movement = mov;
 
             // assign the growth rates
+            hitPointsRate = hpRate;
             attackRate = atkRate;
             defenseRate = defRate;
             magicRate = magRate;
@@ -55,8 +63,8 @@ namespace SRPG_Framework
             speedRate = spdRate;
             movementRate = movRate;
 
-            collectedStats = new List<int>() { attack, defense, magic, resistance, speed, movement };
-            collectedGrowths = new List<int>() { attackRate, defenseRate, magicRate, resistanceRate, speedRate, movementRate};
+            collectedStats = new List<int>() { hitPoints, attack, defense, magic, resistance, speed, movement };
+            collectedGrowths = new List<int>() { hitPointsRate, attackRate, defenseRate, magicRate, resistanceRate, speedRate, movementRate};
         }
         
         // methods
@@ -70,6 +78,11 @@ namespace SRPG_Framework
                     collectedStats[i]++;
                 }
             }
+        }
+
+        public void GetExperience(int exp)
+        {
+            currentExperience += exp;
         }
 
     }

@@ -15,6 +15,8 @@ namespace SRPG_Framework
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        enum Classes { };
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);

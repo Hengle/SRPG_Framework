@@ -13,6 +13,7 @@ namespace SRPG_Framework
     {
         // attributes
         string name;
+        string characterClass;
         Random growthChecker;
         
         // properties
@@ -27,9 +28,10 @@ namespace SRPG_Framework
         }
 
         // constructor
-        public Character(Texture2D thisSprite, int x, int y, int width, int height, bool isDynamic, string thisName) : base(thisSprite, x, y, width, height, isDynamic)
+        public Character(Texture2D thisSprite, int x, int y, int width, int height, bool isDynamic, string thisName, string thisClass) : base(thisSprite, x, y, width, height, isDynamic)
         {
             name = thisName;
+            characterClass = thisClass;
             growthChecker = new Random();
         }
 
